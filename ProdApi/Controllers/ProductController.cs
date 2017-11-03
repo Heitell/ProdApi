@@ -8,16 +8,16 @@ using System.Web.Http;
 
 namespace ProdApi.Controllers
 {
-    public class ProductsController : ApiController
+    public class ProductController : ApiController
     {
-        BaseProducts[] products = new BaseProducts[]
+        BaseProduct[] products = new BaseProduct[]
         {
-            new BaseProducts { Id = 1, Name = "Помидор" },
-            new BaseProducts { Id = 2, Name = "Огурец" },
-            new BaseProducts { Id = 3, Name = "Перец" }
+            new BaseProduct { Id = 1, Name = "Помидор" },
+            new BaseProduct { Id = 2, Name = "Огурец" },
+            new BaseProduct { Id = 3, Name = "Перец" }
         };
 
-        public IEnumerable<BaseProducts> GetAllProducts()
+        public IEnumerable<BaseProduct> GetAllProducts()
         {
             return products;
         }

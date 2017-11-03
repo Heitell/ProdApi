@@ -5,7 +5,7 @@ using System.Web;
 
 namespace ProdApi.Models
 {
-    public class BaseProducts
+    public class CookingType
     {
         public byte Id { get; set; }
         public string Name { get; set; }
