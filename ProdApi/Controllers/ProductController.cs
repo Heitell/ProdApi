@@ -26,7 +26,7 @@ namespace ProdApi.Controllers
 
         public IHttpActionResult GetProduct(int id)
         {
-            var product = db.BaseProducts.FirstOrDefault((p) => p.BaseProductId == id);
+            var product = db.BaseProducts.FirstOrDefault((p) => p.Id == id);
             if (product == null)
             {
                 return NotFound();

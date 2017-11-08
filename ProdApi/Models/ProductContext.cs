@@ -15,12 +15,14 @@ namespace ProdApi.Models
             Database.SetInitializer<ProductContext>(new ProductContextInitializer());
         }
 
-        public ProductContext() : base("FoodDiary")
+        public ProductContext() : base("ProductsApiDB")
         { }
-               
+           
         
 
         public DbSet<Product> Products { get; set; }
-        public DbSet<BaseProduct> BaseProducts { get; set; }  
+        public DbSet<BaseProduct> BaseProducts { get; set; }
+        public DbSet<CookingType> CookingTypes { get; set; }
+        public DbSet<ProductPart> ProductParts { get; set; }
     }
 }

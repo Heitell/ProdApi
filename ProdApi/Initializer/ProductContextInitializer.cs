@@ -11,12 +11,7 @@ namespace ProdApi.Initializer
     {
         protected override void Seed(ProductContext db)
         {
-            BaseProduct p1 = new BaseProduct { Name = "Треска" };
-            BaseProduct p2 = new BaseProduct { Name = "Индейка" };            
-
-            db.BaseProducts.Add(p1);
-            db.BaseProducts.Add(p2);
-            db.SaveChanges();
+            
         }
     }
 }

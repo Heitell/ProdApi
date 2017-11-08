@@ -3,7 +3,7 @@ namespace ProdApi.Migrations
     using System;
     using System.Data.Entity.Migrations;
     
-    public partial class data : DbMigration
+    public partial class ApiDb : DbMigration
     {
         public override void Up()
         {
@@ -11,32 +11,33 @@ namespace ProdApi.Migrations
                 "dbo.BaseProducts",
                 c => new
                     {
-                        BaseProductId = c.Byte(nullable: false),
+                        Id = c.Int(nullable: false, identity: true),
                         Name = c.String(),
                     })
-                .PrimaryKey(t => t.BaseProductId);
+                .PrimaryKey(t => t.Id);
             
             CreateTable(
                 "dbo.Products",
                 c => new
                     {
-                        ProductId = c.Int(nullable: false, identity: true),
+                        Id = c.Int(nullable: false, identity: true),
+                        Name = c.String(),
                         Protein = c.Single(nullable: false),
                         Fat = c.Single(nullable: false),
                         Carbohydrates = c.Single(nullable: false),
                         Callories = c.Int(nullable: false),
-                        BaseProduct_BaseProductId = c.Byte(),
+                        BaseProduct_Id = c.Int(),
                     })
-                .PrimaryKey(t => t.ProductId)
-                .ForeignKey("dbo.BaseProducts", t => t.BaseProduct_BaseProductId)
-                .Index(t => t.BaseProduct_BaseProductId);
+                .PrimaryKey(t => t.Id)
+                .ForeignKey("dbo.BaseProducts", t => t.BaseProduct_Id)
+                .Index(t => t.BaseProduct_Id);
             
         }
         
         public override void Down()
         {
-            DropForeignKey("dbo.Products", "BaseProduct_BaseProductId", "dbo.BaseProducts");
-            DropIndex("dbo.Products", new[] { "BaseProduct_BaseProductId" });
+            DropForeignKey("dbo.Products", "BaseProduct_Id", "dbo.BaseProducts");
+            DropIndex("dbo.Products", new[] { "BaseProduct_Id" });
             DropTable("dbo.Products");
             DropTable("dbo.BaseProducts");
         }

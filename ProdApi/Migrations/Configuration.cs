@@ -17,8 +17,8 @@ namespace ProdApi.Migrations
 
     //    protected override void Seed(ProdApi.Models.ProductContext context)
     //    {
-    //        context.BaseProducts.AddOrUpdate(new BaseProduct { BaseProductId = 1, Name = "Помидор" },
-    //new BaseProduct { BaseProductId = 2, Name = "Огурец" });
+    //        context.BaseProducts.AddOrUpdate(new BaseProduct { Id = 1, Name = "Помидор" },
+    //new BaseProduct { Id = 2, Name = "Огурец" });
             
 
 
