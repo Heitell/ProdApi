@@ -10,21 +10,23 @@ namespace ProdApi.Controllers
 {
     public class ProductController : ApiController
     {
-        BaseProduct[] products = new BaseProduct[]
-        {
-            new BaseProduct { Id = 1, Name = "Помидор" },
-            new BaseProduct { Id = 2, Name = "Огурец" },
-            new BaseProduct { Id = 3, Name = "Перец" }
-        };
+        //BaseProduct[] products = new BaseProduct[]
+        //{
+        //    new BaseProduct { BaseProductId = 1, Name = "Помидор" },
+        //    new BaseProduct { BaseProductId = 2, Name = "Огурец" },
+        //    new BaseProduct { BaseProductId = 3, Name = "Перец" }
+        //};
+        ProductContext db = new ProductContext();
+        
 
         public IEnumerable<BaseProduct> GetAllProducts()
         {
-            return products;
+            return db.BaseProducts;
         }
 
         public IHttpActionResult GetProduct(int id)
         {
-            var product = products.FirstOrDefault((p) => p.Id == id);
+            var product = db.BaseProducts.FirstOrDefault((p) => p.BaseProductId == id);
             if (product == null)
             {
                 return NotFound();

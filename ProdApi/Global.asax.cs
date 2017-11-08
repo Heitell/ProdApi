@@ -5,7 +5,6 @@ using System.Web;
 using System.Web.Http;
 using System.Web.Routing;
 using ProdApi.Models;
-using ProdApi.DAL;
 using System.Data.Entity;
 
 namespace ProdApi

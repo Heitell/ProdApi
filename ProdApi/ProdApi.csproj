@@ -124,31 +124,17 @@
   <ItemGroup>
     <Compile Include="App_Start\WebApiConfig.cs" />
     <Compile Include="Controllers\ProductController.cs" />
-    <Compile Include="DAL\ProductInitializer.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\201711031615109_Initial.cs" />
-    <Compile Include="Migrations\201711031615109_Initial.Designer.cs">
-      <DependentUpon>201711031615109_Initial.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201711031621186_Initial1.cs" />
-    <Compile Include="Migrations\201711031621186_Initial1.Designer.cs">
-      <DependentUpon>201711031621186_Initial1.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201711031623048_Initial2.cs" />
-    <Compile Include="Migrations\201711031623048_Initial2.Designer.cs">
-      <DependentUpon>201711031623048_Initial2.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201711031623380_Initial3.cs" />
-    <Compile Include="Migrations\201711031623380_Initial3.Designer.cs">
-      <DependentUpon>201711031623380_Initial3.cs</DependentUpon>
+    <Compile Include="Initializer\ProductContextInitializer.cs" />
+    <Compile Include="Migrations\201711081513455_data.cs" />
+    <Compile Include="Migrations\201711081513455_data.Designer.cs">
+      <DependentUpon>201711081513455_data.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\BaseProduct.cs" />
-    <Compile Include="Models\CookingType.cs" />
     <Compile Include="Models\ProductContext.cs" />
-    <Compile Include="Models\ProductPart.cs" />
     <Compile Include="Models\Product.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -168,17 +154,8 @@
     <Folder Include="App_Data\" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\201711031615109_Initial.resx">
-      <DependentUpon>201711031615109_Initial.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201711031621186_Initial1.resx">
-      <DependentUpon>201711031621186_Initial1.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201711031623048_Initial2.resx">
-      <DependentUpon>201711031623048_Initial2.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201711031623380_Initial3.resx">
-      <DependentUpon>201711031623380_Initial3.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201711081513455_data.resx">
+      <DependentUpon>201711081513455_data.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

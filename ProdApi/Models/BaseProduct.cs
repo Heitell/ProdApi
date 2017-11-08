@@ -7,13 +7,10 @@ using System.Web;
 namespace ProdApi.Models
 {
     public class BaseProduct
-    {
-        [Required]
-        public byte Id { get; set; }
-
-        [Required]
+    {        
+        public byte BaseProductId { get; set; }        
         public string Name { get; set; }
 
-        public Product Product { get; set; }
+        public ICollection<Product> Products { get; set; }
     }
 }
