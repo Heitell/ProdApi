@@ -16,7 +16,7 @@
     <AssemblyName>ProdApi</AssemblyName>
     <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
     <UseIISExpress>true</UseIISExpress>
-    <Use64BitIISExpress />
+    <Use64BitIISExpress>true</Use64BitIISExpress>
     <IISExpressSSLPort />
     <IISExpressAnonymousAuthentication />
     <IISExpressWindowsAuthentication />
@@ -136,12 +136,28 @@
     <Compile Include="Migrations\201711081712445_ApiDb1.Designer.cs">
       <DependentUpon>201711081712445_ApiDb1.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201711121345547_Auth.cs" />
+    <Compile Include="Migrations\201711121345547_Auth.Designer.cs">
+      <DependentUpon>201711121345547_Auth.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201711121410260_Auth1.cs" />
+    <Compile Include="Migrations\201711121410260_Auth1.Designer.cs">
+      <DependentUpon>201711121410260_Auth1.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\BaseProduct.cs" />
     <Compile Include="Models\CookingType.cs" />
+    <Compile Include="Models\FavoriteProducts.cs" />
+    <Compile Include="Models\FoodDiaryLines.cs" />
+    <Compile Include="Models\IdentityUser.cs" />
+    <Compile Include="Models\Measure.cs" />
+    <Compile Include="Models\MeasuresDiaryLines.cs" />
+    <Compile Include="Models\Permissions.cs" />
     <Compile Include="Models\ProductContext.cs" />
     <Compile Include="Models\Product.cs" />
     <Compile Include="Models\ProductPart.cs" />
+    <Compile Include="Models\UserPermissionRoles.cs" />
+    <Compile Include="Models\UserProducts.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -165,6 +181,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201711081712445_ApiDb1.resx">
       <DependentUpon>201711081712445_ApiDb1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201711121345547_Auth.resx">
+      <DependentUpon>201711121345547_Auth.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201711121410260_Auth1.resx">
+      <DependentUpon>201711121410260_Auth1.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

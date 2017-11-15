@@ -16,6 +16,9 @@ namespace ProdApi.Models
         public float Fat { get; set; }
         public float Carbohydrates { get; set; }
         public int Callories { get; set; }       
-        
+        public bool IsApprove { get; set; }
+
+        public ICollection<UserProducts> UserProducts { get; set; }
+        public ICollection<FavoriteProducts> FavoriteProducts { get; set; }
     }
 }
