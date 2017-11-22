@@ -7,13 +7,13 @@ namespace ProdApi.Migrations
     using System.Resources;
     
     [GeneratedCode("EntityFramework.Migrations", "6.1.3-40302")]
-    public sealed partial class Auth1 : IMigrationMetadata
+    public sealed partial class Auth : IMigrationMetadata
     {
-        private readonly ResourceManager Resources = new ResourceManager(typeof(Auth1));
+        private readonly ResourceManager Resources = new ResourceManager(typeof(Auth));
         
         string IMigrationMetadata.Id
         {
-            get { return "201711121410260_Auth1"; }
+            get { return "201711201211399_Auth"; }
         }
         
         string IMigrationMetadata.Source

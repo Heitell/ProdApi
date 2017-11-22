@@ -1,0 +1,10 @@
+{
+"UserName" : "user2",
+"Password": "222222",
+"confirmPassword" : "222222",
+"EmailConfirmed" : "false",
+"PhoneNumberConfirmed" : "false",
+"TwoFactorEnabled" : "false",
+"LockoutEnabled" : "false",
+"AccessFailedCpunt" : "0"
+}

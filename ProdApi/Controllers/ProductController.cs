@@ -8,6 +8,7 @@ using System.Web.Http;
 
 namespace ProdApi.Controllers
 {
+    [RoutePrefix("api/Product")]
     public class ProductController : ApiController
     {
         //BaseProduct[] products = new BaseProduct[]
@@ -17,13 +18,20 @@ namespace ProdApi.Controllers
         //    new BaseProduct { BaseProductId = 3, Name = "Перец" }
         //};
         ProductContext db = new ProductContext();
-        
 
-        public IEnumerable<BaseProduct> GetAllProducts()
+        [Authorize]
+        [Route("")]
+        public IHttpActionResult Get()
         {
-            return db.BaseProducts;
+            return Ok(db.BaseProducts);
         }
 
+        //public IEnumerable<BaseProduct> GetAllProducts()
+        //{
+        //    return db.BaseProducts;
+        //}
+
+        [Authorize]
         public IHttpActionResult GetProduct(int id)
         {
             var product = db.BaseProducts.FirstOrDefault((p) => p.Id == id);

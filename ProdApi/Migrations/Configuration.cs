@@ -11,8 +11,7 @@ namespace ProdApi.Migrations
     {
         public Configuration()
         {
-            AutomaticMigrationsEnabled = true;
-            AutomaticMigrationDataLossAllowed = true;
+            
         }
 
     //    protected override void Seed(ProdApi.Models.ProductContext context)

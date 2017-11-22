@@ -7,7 +7,7 @@ using System.Web;
 
 namespace ProdApi.Initializer
 {
-    public class ProductContextInitializer : DropCreateDatabaseIfModelChanges<ProductContext>
+    public class ProductContextInitializer : CreateDatabaseIfNotExists<ProductContext>
     {
         protected override void Seed(ProductContext db)
         {

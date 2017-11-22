@@ -5,10 +5,12 @@ using System.Web;
 using System.Data.Entity;
 using System.Data.Entity.ModelConfiguration.Conventions;
 using ProdApi.Initializer;
+using Microsoft.AspNet.Identity.EntityFramework;
 
 namespace ProdApi.Models
 {
-    public class ProductContext : DbContext
+    // был наследником DbContext
+    public class ProductContext : IdentityDbContext<ProdApi.Models.Users>
     {
         static ProductContext()
         {
@@ -24,7 +26,7 @@ namespace ProdApi.Models
         public DbSet<BaseProduct> BaseProducts { get; set; }
         public DbSet<CookingType> CookingTypes { get; set; }
         public DbSet<ProductPart> ProductParts { get; set; }
-        public DbSet<IdentityUser> IdentityUser { get; set; }
+        public override IDbSet<Users> Users { get; set; }
         public DbSet<Permissions> Permissions { get; set; }
         public DbSet<UserPermissionRoles> UserPermissionRoles { get; set; }
         public DbSet<UserProducts> UserProducts { get; set; }
@@ -32,5 +34,10 @@ namespace ProdApi.Models
         public DbSet<FoodDiaryLines> FoodDiaryLines { get; set; }
         public DbSet<MeasuresDiaryLines> MeasuresDiaryLines { get; set; }
         public DbSet<FavoriteProducts> FavoriteProducts { get; set; }
+
+        //protected override void OnModelCreating(DbModelBuilder modelBuilder)
+        //{
+        //    modelBuilder.Conventions.Remove<PluralizingTableNameConvention>();
+        //}
     }
 }
