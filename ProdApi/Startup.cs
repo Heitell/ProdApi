@@ -8,7 +8,7 @@ using Owin;
 using Microsoft.Owin.Security.OAuth;
 using ProdApi.Authorization;
 
-[assembly: OwinStartup(typeof(ProdApi.Startup))]
+//[assembly: OwinStartup(typeof(ProdApi.Startup))]
 namespace ProdApi
 {
     public class Startup

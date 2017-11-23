@@ -17,6 +17,11 @@ namespace ProdApi
             config.MapHttpAttributeRoutes();
 
             config.Routes.MapHttpRoute(
+            name: "GetDiaryLinesByDate",
+            routeTemplate: "api/{controller}/{action}/{date}"
+            );
+
+            config.Routes.MapHttpRoute(
                 name: "DefaultApi",
                 routeTemplate: "api/{controller}/{id}",
                 defaults: new { id = RouteParameter.Optional }

@@ -32,6 +32,7 @@ namespace ProdApi.Controllers
         //}
 
         [Authorize]
+        [Route("")]
         public IHttpActionResult GetProduct(int id)
         {
             var product = db.BaseProducts.FirstOrDefault((p) => p.Id == id);
@@ -39,6 +40,15 @@ namespace ProdApi.Controllers
             {
                 return NotFound();
             }
+            return Ok(product);
+        }
+
+        //[Authorize]
+        [Route("GetDiaryLinesByDate")]
+        public IHttpActionResult GetDiaryLinesByDate(string date)
+        {
+            DateTime dateTime = DateTime.ParseExact( date, "ddMMyyyy", null);
+            var product = db.FoodDiaryLines.Where((p) => p.DateTime == dateTime);
             return Ok(product);
         }
     }

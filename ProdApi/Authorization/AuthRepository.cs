@@ -26,7 +26,12 @@ namespace ProdApi.Authorization
         {
             Models.Users user = new Models.Users
             {
-                UserName = userModel.UserName                
+                UserName = userModel.UserName,
+                EmailConfirmed = false,
+                PhoneNumberConfirmed = false,
+                TwoFactorEnabled = false,
+                LockoutEnabled = false,
+                AccessFailedCount = 0
             };
 
             IdentityResult result = null;
