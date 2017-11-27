@@ -11,21 +11,24 @@ namespace ProdApi.Controllers
         
     }
 
-    public class DailySummary
+    public class Summary
     {
-        private float _carb = 0;
-        private float _fat = 0;
-        private float _protein = 0;
-        private float _callories = 0;
+        public float Carb;
+        public float Fat;
+        public float Protein;
+        public float Callories;
+        public IQueryable<FoodDiaryLines> Lines;
 
-        public float Carb { get { return _carb; } }
-        public float Fat { get { return _fat; } }
-        public float Protein { get { return _protein; } }
-        public float Callories { get { return _callories; } }
-
-        public DailySummary(Product product)
+        public Summary(IQueryable<FoodDiaryLines> lines)
         {
-            
+            Lines = lines;
+            foreach (var item in Lines)
+            {
+                Carb += item.Carbohydrates;
+                Fat += item.Fat;
+                Protein += item.Protein;
+                Callories += item.Calories;
+            }
         }
     }    
 }

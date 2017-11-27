@@ -43,19 +43,15 @@ namespace ProdApi.Controllers
             return Ok(product);
         }
 
-        //[Authorize]
+        [Authorize]
         [Route("GetDiaryLinesByDate")]
         public IHttpActionResult GetDiaryLinesByDate(string date)
         {
             DateTime dateTime = DateTime.ParseExact( date, "ddMMyyyy", null);
             var product = db.FoodDiaryLines.Where((p) => p.DateTime == dateTime);
 
-            //float carb_sum = 0;
-            //foreach (var item in product)
-            //{
-            //    carb_sum += item.Carbohydrates;
-            //}
-            return Ok(product);
+            Summary dailySum = new Summary(product);
+            return Ok(dailySum);
         }
     }
 }
