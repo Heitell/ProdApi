@@ -142,11 +142,12 @@
     <Compile Include="Authorization\AuthRepository.cs" />
     <Compile Include="Authorization\SimpleAuthorizationServerProvider.cs" />
     <Compile Include="Controllers\AccountController.cs" />
+    <Compile Include="Controllers\Helpers.cs" />
     <Compile Include="Controllers\ProductController.cs" />
     <Compile Include="Initializer\ProductContextInitializer.cs" />
-    <Compile Include="Migrations\201711201211399_Auth.cs" />
-    <Compile Include="Migrations\201711201211399_Auth.Designer.cs">
-      <DependentUpon>201711201211399_Auth.cs</DependentUpon>
+    <Compile Include="Migrations\201711250910136_Auth.cs" />
+    <Compile Include="Migrations\201711250910136_Auth.Designer.cs">
+      <DependentUpon>201711250910136_Auth.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\BaseProduct.cs" />
@@ -181,8 +182,8 @@
     <Folder Include="App_Data\" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\201711201211399_Auth.resx">
-      <DependentUpon>201711201211399_Auth.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201711250910136_Auth.resx">
+      <DependentUpon>201711250910136_Auth.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
@@ -203,8 +204,7 @@
           <IISUrl>http://localhost:52660/</IISUrl>
           <NTLMAuthentication>False</NTLMAuthentication>
           <UseCustomServer>False</UseCustomServer>
-          <CustomServerUrl>
-          </CustomServerUrl>
+          <CustomServerUrl>http://ProdApi.somee.com</CustomServerUrl>
           <SaveServerSettingsInUserFile>False</SaveServerSettingsInUserFile>
         </WebProjectProperties>
       </FlavorProperties>

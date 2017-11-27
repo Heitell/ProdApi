@@ -49,6 +49,12 @@ namespace ProdApi.Controllers
         {
             DateTime dateTime = DateTime.ParseExact( date, "ddMMyyyy", null);
             var product = db.FoodDiaryLines.Where((p) => p.DateTime == dateTime);
+
+            //float carb_sum = 0;
+            //foreach (var item in product)
+            //{
+            //    carb_sum += item.Carbohydrates;
+            //}
             return Ok(product);
         }
     }

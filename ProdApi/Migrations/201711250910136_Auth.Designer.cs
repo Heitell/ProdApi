@@ -13,7 +13,7 @@ namespace ProdApi.Migrations
         
         string IMigrationMetadata.Id
         {
-            get { return "201711201211399_Auth"; }
+            get { return "201711250910136_Auth"; }
         }
         
         string IMigrationMetadata.Source
