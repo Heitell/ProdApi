@@ -6,8 +6,10 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Net;
 using System.Net.Http;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using System.Web.Http;
+using System.Web.Http.Results;
 
 namespace ProdApi.Controllers
 {
@@ -18,29 +20,30 @@ namespace ProdApi.Controllers
 
         public AccountController()
         {
-            _repo = new AuthRepository();
+            _repo = new AuthRepository();            
         }
 
         // POST api/Account/Register
         [AllowAnonymous]
         [Route("Register")]
         public async Task<IHttpActionResult> Register(Users userModel)
-        {
+        {          
+            
             if (!ModelState.IsValid)
             {
-                return BadRequest(ModelState);
+                return Content<Reply>(HttpStatusCode.BadRequest, new Reply(ErrorCode.FieldValidationError, "Ошибка при проверке полей формы.", FormReplyMessage()));                
             }
 
             IdentityResult result = await _repo.RegisterUser(userModel);
 
-            IHttpActionResult errorResult = GetErrorResult(result);
+            Reply errorResult = GetErrorResult(result);
 
             if (errorResult != null)
             {
-                return errorResult;
+                return Content<Reply>(HttpStatusCode.BadRequest, errorResult);                
             }
 
-            return Ok();
+            return Content<Reply>(HttpStatusCode.OK, new Reply(ErrorCode.OK, "Запрос выполнен.", FormReplyMessage()));           
         }
 
         protected override void Dispose(bool disposing)
@@ -53,11 +56,11 @@ namespace ProdApi.Controllers
             base.Dispose(disposing);
         }
 
-        private IHttpActionResult GetErrorResult(IdentityResult result)
+        private Reply GetErrorResult(IdentityResult result)
         {
             if (result == null)
             {
-                return InternalServerError();
+                return new Reply(ErrorCode.UspecifyedError, "Ошибка севера.", FormReplyMessage());
             }
 
             if (!result.Succeeded)
@@ -67,19 +70,42 @@ namespace ProdApi.Controllers
                     foreach (string error in result.Errors)
                     {
                         ModelState.AddModelError("", error);
-                    }
-                }
+                    }                    
+                }                
 
-                if (ModelState.IsValid)
-                {
-                    // No ModelState errors are available to send, so just return an empty BadRequest.
-                    return BadRequest();
-                }
-
-                return BadRequest(ModelState);
+                return new Reply(ErrorCode.UspecifyedError, "Ошибка севера.", FormReplyMessage()); ;
             }
 
             return null;
+        }
+
+        private List<ErrorDetails> FormReplyMessage()
+        {
+            //Dictionary<string, string> temp = new Dictionary<string, string>();
+            List<ErrorDetails> temp = new List<ErrorDetails>();
+            IEnumerable<string> tempkey = ModelState.Keys.SelectMany(key => this.ModelState[key].Errors.Select(x => key));
+
+            int i = 0;
+            string tempItemName = string.Empty;
+            foreach (var item in tempkey)
+            {
+                if (item != tempItemName)
+                {
+                    tempItemName = item;
+                    IEnumerable<string> tempmessage = ModelState[item].Errors.Select(x => x.ErrorMessage);
+                    foreach (var itemmessage in tempmessage)
+                    {
+                        temp.Add(new ErrorDetails(item, itemmessage));
+                    }
+                    i += tempmessage.Count();
+                    if (i >= tempkey.Count())
+                    {
+                        break;
+                    }
+                }
+                
+            }
+            return temp;
         }
     }
 }

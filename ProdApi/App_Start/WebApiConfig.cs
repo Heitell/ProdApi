@@ -30,7 +30,11 @@ namespace ProdApi
             config.Formatters.Remove(config.Formatters.XmlFormatter);
 
             var jsonFormatter = config.Formatters.OfType<JsonMediaTypeFormatter>().First();
-            jsonFormatter.SerializerSettings.ContractResolver = new CamelCasePropertyNamesContractResolver();
+            //jsonFormatter.SerializerSettings.ContractResolver = new CamelCasePropertyNamesContractResolver();
+            
+            jsonFormatter.SerializerSettings.ContractResolver = new DefaultContractResolver { NamingStrategy = new SnakeCaseNamingStrategy() };  
+            
+            
         }
     }
 }

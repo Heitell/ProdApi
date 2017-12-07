@@ -38,8 +38,9 @@ namespace ProdApi.Controllers
             var product = db.BaseProducts.FirstOrDefault((p) => p.Id == id);
             if (product == null)
             {
-                return NotFound();
+                return NotFound();                
             }
+             
             return Ok(product);
         }
 

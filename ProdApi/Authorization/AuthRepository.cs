@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.EntityFramework;
+using Microsoft.AspNet.Identity.Owin;
 using ProdApi.Models;
 using System;
 using System.Collections.Generic;
@@ -7,6 +8,8 @@ using System.Data.Entity.Validation;
 using System.Linq;
 using System.Threading.Tasks;
 using System.Web;
+using System.Web.Http;
+using System.Web.ModelBinding;
 
 namespace ProdApi.Authorization
 {
@@ -19,9 +22,11 @@ namespace ProdApi.Authorization
         public AuthRepository()
         {
             _ctx = new ProductContext();
-            _userManager = new UserManager<Models.Users>(new UserStore<Models.Users>(_ctx));
+            _userManager = new UserManager<Models.Users>(new UserStore<Users>(_ctx));
+
         }
 
+        [HttpPost]
         public async Task<IdentityResult> RegisterUser(Models.Users userModel)
         {
             Models.Users user = new Models.Users
@@ -49,7 +54,7 @@ namespace ProdApi.Authorization
                     }
                 }
             }
-            
+
 
             return result;
         }
@@ -67,5 +72,5 @@ namespace ProdApi.Authorization
             _userManager.Dispose();
 
         }
-    }
+    }    
 }

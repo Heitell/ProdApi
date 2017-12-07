@@ -14,6 +14,8 @@ namespace ProdApi.Models
 
         [Required]
         [Display(Name = "User name")]
+        [MinLength(6, ErrorMessage = "Имя пользователя должно состоять хотябы из 6-ти символов.")]
+        [RegularExpression(@"^[a - zA - Z0 - 9] +$", ErrorMessage = "Имя пользователя содержит недопустимые символы.")]
         public override string UserName { get; set; }
 
         public override string Email { get; set; }
@@ -21,11 +23,12 @@ namespace ProdApi.Models
 
         [DataType(DataType.Password)]
         [Display(Name = "Password")]
+        [MinLength(6, ErrorMessage = "Пароль должен состоять хотябы из 6-ти символов.")]
         public string Password { get; set; }
 
         [DataType(DataType.Password)]
         [Display(Name = "Confirm password")]
-        [Compare("Password", ErrorMessage = "The password and confirmation password do not match.")]
+        [Compare("Password", ErrorMessage = "Пароли не совпадают.")]
         public string ConfirmPassword { get; set; }
 
         public string FirstName { get; set; }
